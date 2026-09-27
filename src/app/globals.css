@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #f7f2ea;
+  --color-linen: #efe7da;
+  --color-sand: #e3d6c3;
+  --color-clay: #c49a7a;
+  --color-clay-deep: #9c6f52;
+  --color-sage: #b9c2a8;
+  --color-sage-soft: #dfe3d3;
+  --color-forest: #0b3b34;
+  --color-ink: #2d2823;
+  --color-stone: #6f665d;
+
+  --font-display: var(--font-cormorant), "Times New Roman", serif;
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-sage);
+    color: var(--color-forest);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-forest);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer utilities {
+  .eyebrow {
+    @apply text-[0.7rem] font-medium uppercase tracking-[0.22em] text-stone;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pb-safe {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
