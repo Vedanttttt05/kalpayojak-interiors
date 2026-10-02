@@ -71,7 +71,8 @@ export function Videos() {
 
 function VideoCard({ video, index }: { video: (typeof videos)[number]; index: number }) {
   const ref = useRef<HTMLVideoElement>(null);
-  const inView = useInView(ref, { amount: 0.6 });
+  // Any card showing in the rail keeps playing, so neighbours don't freeze mid-swipe
+  const inView = useInView(ref, { amount: 0.15 });
   const reduce = useReducedMotion();
   const [paused, setPaused] = useState(false);
 
