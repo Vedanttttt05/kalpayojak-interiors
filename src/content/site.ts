@@ -1,5 +1,6 @@
 import type { StaticImageData } from "next/image";
 
+import poojaPortrait from "@/assets/pooja-patil.jpg";
 import sage01 from "@/assets/sage/01.jpg";
 import sage02 from "@/assets/sage/02.jpg";
 import sage03 from "@/assets/sage/03.jpg";
@@ -68,8 +69,8 @@ export const contact = {
   phoneDisplay: "+91 76780 35038",
   phoneE164: "917678035038",
   email: "kalpayojakinteriors2728@gmail.com",
-  // TODO: confirm Instagram handle
-  instagram: "kalpayojak.interiors",
+  instagram: "kalpayojakinteriors",
+  instagramUrl: "https://www.instagram.com/kalpayojakinteriors/",
   area: "Dombivli",
   address: ["2nd Floor, Samarth Bldg, Sonarpada,", "Kalyan–Shilphata Rd, Dombivli (E)"],
 };
@@ -85,7 +86,7 @@ export function whatsappLink(message = "Hi Pooja, I found Kalpayojak online and 
 export const nav = [
   { href: "#about", label: "Studio" },
   { href: "#work", label: "Work" },
-  { href: "#reels", label: "Reels" },
+  { href: "#videos", label: "Videos" },
   { href: "#process", label: "Process" },
   { href: "#contact", label: "Contact" },
 ];
@@ -226,8 +227,8 @@ export const spaces: Space[] = [
   },
 ];
 
-/* Short walkthrough clips — public/reels/NN.mp4 with NN.jpg posters */
-const reelList = [
+/* Short walkthrough video snippets — public/videos/NN.mp4 with NN.jpg posters */
+const videoList = [
   { id: "01", label: "Dining with oval mirrors" },
   { id: "03", label: "Foyer storage" },
   { id: "02", label: "Entrance partition" },
@@ -239,13 +240,13 @@ const reelList = [
   { id: "09", label: "Lit TV wall" },
   { id: "10", label: "Display shelving" },
   { id: "11", label: "Floating TV unit" },
-].map((r) => ({ ...r, src: `/reels/${r.id}.mp4`, poster: `/reels/${r.id}.jpg` }));
+].map((r) => ({ ...r, src: `/videos/${r.id}.mp4`, poster: `/videos/${r.id}.jpg` }));
 
-/* The first clip opens the page on mobile; the rest live in the reels rail */
-export const [heroReel, ...reels] = reelList;
+/* The first clip opens the page on mobile; the rest live in the video row */
+export const [heroVideo, ...videos] = videoList;
 
 export const heroImageWide = sage01;
-export const aboutImage = living08;
+export const aboutImage = poojaPortrait;
 
 export const process = [
   {

@@ -2,21 +2,21 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
-import { reels, whatsappLink } from "@/content/site";
+import { videos, whatsappLink } from "@/content/site";
 import { Reveal } from "./Reveal";
 import { ArrowIcon } from "./icons";
 import { LineReveal, RailArrows, SwipeProgress, fadeUp, staggerParent } from "./motion";
 
 /* Short site walkthroughs that play quietly as they scroll into view */
-export function Reels() {
+export function Videos() {
   const railRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section id="reels" className="overflow-hidden bg-forest py-20 text-cream md:py-32">
+    <section id="videos" className="overflow-hidden bg-forest py-20 text-cream md:py-32">
       <div className="mx-auto max-w-6xl px-5 md:flex md:items-end md:justify-between md:px-8">
         <div>
           <Reveal>
-            <p className="eyebrow !text-sage">On site</p>
+            <p className="eyebrow !text-sage">Video snippets</p>
           </Reveal>
           <LineReveal
             className="mt-4 font-display text-[2.15rem] font-light leading-[1.05] md:text-6xl"
@@ -43,8 +43,8 @@ export function Reels() {
         whileInView="show"
         viewport={{ once: true, margin: "0px 0px -10% 0px" }}
       >
-        {reels.map((reel, i) => (
-          <ReelCard key={reel.id} reel={reel} index={i} />
+        {videos.map((video, i) => (
+          <VideoCard key={video.id} video={video} index={i} />
         ))}
       </motion.div>
 
@@ -56,7 +56,7 @@ export function Reels() {
 
       <Reveal className="mx-auto mt-10 max-w-6xl px-5 md:px-8">
         <a
-          href={whatsappLink("Hi Pooja! I saw your reels and would like something similar for my home.")}
+          href={whatsappLink("Hi Pooja! I saw your videos and would like something similar for my home.")}
           target="_blank"
           rel="noopener noreferrer"
           className="group inline-flex items-center gap-6 border-b border-cream/30 pb-2 text-xs font-medium uppercase tracking-[0.2em]"
@@ -69,19 +69,19 @@ export function Reels() {
   );
 }
 
-function ReelCard({ reel, index }: { reel: (typeof reels)[number]; index: number }) {
+function VideoCard({ video, index }: { video: (typeof videos)[number]; index: number }) {
   const ref = useRef<HTMLVideoElement>(null);
   const inView = useInView(ref, { amount: 0.6 });
   const reduce = useReducedMotion();
   const [paused, setPaused] = useState(false);
 
   useEffect(() => {
-    const video = ref.current;
-    if (!video) return;
+    const el = ref.current;
+    if (!el) return;
     if (inView && !paused && !reduce) {
-      video.play().catch(() => {});
+      el.play().catch(() => {});
     } else {
-      video.pause();
+      el.pause();
     }
   }, [inView, paused, reduce]);
 
@@ -91,12 +91,12 @@ function ReelCard({ reel, index }: { reel: (typeof reels)[number]; index: number
         type="button"
         onClick={() => setPaused((p) => !p)}
         className="group relative block aspect-[9/16] w-full overflow-hidden rounded-sm bg-[#123f38]"
-        aria-label={`${paused ? "Play" : "Pause"} video: ${reel.label}`}
+        aria-label={`${paused ? "Play" : "Pause"} video: ${video.label}`}
       >
         <video
           ref={ref}
-          src={reel.src}
-          poster={reel.poster}
+          src={video.src}
+          poster={video.poster}
           muted
           loop
           playsInline
@@ -116,7 +116,7 @@ function ReelCard({ reel, index }: { reel: (typeof reels)[number]; index: number
       </button>
       <figcaption className="mt-3 flex items-baseline gap-2 text-sm">
         <span className="font-display italic text-sand">{String(index + 1).padStart(2, "0")}</span>
-        <span className="text-cream/85">{reel.label}</span>
+        <span className="text-cream/85">{video.label}</span>
       </figcaption>
     </motion.figure>
   );

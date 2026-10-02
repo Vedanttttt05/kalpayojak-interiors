@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useMotionTemplate, useScroll, useTransform } from "framer-motion";
-import { contact, heroImageWide, heroReel, services, whatsappLink } from "@/content/site";
+import { contact, heroImageWide, heroVideo, services, whatsappLink } from "@/content/site";
 import { ArrowIcon, WhatsAppIcon } from "./icons";
 import { LineReveal, Marquee, ease } from "./motion";
 
@@ -95,13 +95,13 @@ function ExpandingImage() {
       <motion.div className="relative h-[82svh] overflow-hidden bg-sand md:h-[92vh]" style={{ clipPath }}>
         <motion.div className="absolute inset-0" style={{ scale }}>
           <video
-            src={heroReel.src}
-            poster={heroReel.poster}
+            src={heroVideo.src}
+            poster={heroVideo.poster}
             autoPlay
             muted
             loop
             playsInline
-            aria-label={heroReel.label}
+            aria-label={heroVideo.label}
             className="absolute inset-0 size-full object-cover md:hidden"
           />
           <Image
@@ -117,7 +117,7 @@ function ExpandingImage() {
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/45 to-transparent px-5 pb-5 pt-24 md:px-8">
           <div className="mx-auto flex max-w-6xl items-end justify-between text-cream">
             <p className="font-display text-2xl italic">
-              <span className="md:hidden">{heroReel.label}</span>
+              <span className="md:hidden">{heroVideo.label}</span>
               <span className="hidden md:inline">The Sage Residence</span>
             </p>
             <p className="text-xs tracking-[0.18em] opacity-80">

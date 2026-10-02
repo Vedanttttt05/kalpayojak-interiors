@@ -140,9 +140,12 @@ export function Header() {
                 <WhatsAppIcon className="size-5" />
                 Chat on WhatsApp
               </a>
-              <a href={`tel:+${contact.phoneE164}`} className="block text-center text-sm text-stone">
-                or call {contact.phoneDisplay}
-              </a>
+              <p className="flex justify-center gap-5 text-sm text-stone">
+                <a href={`tel:+${contact.phoneE164}`}>Call {contact.phoneDisplay}</a>
+                <a href={contact.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-forest">
+                  Instagram
+                </a>
+              </p>
             </motion.div>
           </motion.div>
         )}

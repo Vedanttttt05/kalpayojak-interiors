@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { contact, mapsLink, quickMessages, whatsappLink } from "@/content/site";
 import { Reveal } from "./Reveal";
-import { ArrowIcon, MailIcon, PhoneIcon, PinIcon, WhatsAppIcon } from "./icons";
+import { ArrowIcon, InstagramIcon, MailIcon, PhoneIcon, PinIcon, WhatsAppIcon } from "./icons";
 import { LineReveal, ease, fadeUp, staggerParent } from "./motion";
 
 export function Contact() {
@@ -41,6 +41,14 @@ export function Contact() {
             </ContactRow>
             <ContactRow href={`mailto:${contact.email}`} icon={<MailIcon className="size-[1.1rem]" />} label="Email">
               <span className="break-all">{contact.email}</span>
+            </ContactRow>
+            <ContactRow
+              href={contact.instagramUrl}
+              external
+              icon={<InstagramIcon className="size-[1.1rem]" />}
+              label="Instagram"
+            >
+              @{contact.instagram}
             </ContactRow>
             <ContactRow href={mapsLink} external icon={<PinIcon className="size-[1.1rem]" />} label="Visit the studio">
               {contact.address[0]}

@@ -128,6 +128,7 @@ export function ParallaxImage({
   className,
   priority,
   strength = 8,
+  imageClassName,
 }: {
   src: StaticImageData;
   alt: string;
@@ -135,6 +136,7 @@ export function ParallaxImage({
   className?: string;
   priority?: boolean;
   strength?: number;
+  imageClassName?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
@@ -150,7 +152,7 @@ export function ParallaxImage({
       transition={{ duration: 1.1, ease }}
     >
       <motion.div className="absolute -inset-y-[12%] inset-x-0" style={{ y }}>
-        <Image src={src} alt={alt} fill sizes={sizes} placeholder="blur" priority={priority} className="object-cover" />
+        <Image src={src} alt={alt} fill sizes={sizes} placeholder="blur" priority={priority} className={`object-cover ${imageClassName ?? ""}`} />
       </motion.div>
     </motion.div>
   );

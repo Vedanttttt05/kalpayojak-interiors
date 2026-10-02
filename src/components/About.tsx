@@ -1,9 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { about, aboutImage, contact } from "@/content/site";
 import { Reveal } from "./Reveal";
-import { CountUp, LineReveal, ParallaxImage, ease } from "./motion";
+import { CountUp, LineReveal, ease } from "./motion";
 
 export function About() {
   return (
@@ -25,14 +26,32 @@ export function About() {
 
         <div className="mt-10 grid gap-12 md:mt-16 md:grid-cols-[0.9fr_1.1fr] md:gap-20">
           <div className="relative">
-            <ParallaxImage
-              src={aboutImage}
-              alt="Sage leather sofas over a patterned rug"
-              sizes="(min-width: 768px) 45vw, 100vw"
-              className="aspect-[4/5] rounded-sm md:aspect-[4/3]"
-            />
             <motion.div
-              className="absolute -bottom-6 right-4 rounded-sm bg-sage-soft px-5 py-4 shadow-[0_10px_30px_-18px_rgba(11,59,52,0.4)]"
+              className="relative aspect-[4/5] overflow-hidden rounded-sm bg-sand md:mx-auto md:max-w-md"
+              initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
+              whileInView={{ clipPath: "inset(0% 0% 0% 0%)" }}
+              viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+              transition={{ duration: 1.1, ease }}
+            >
+              <motion.div
+                className="absolute inset-0"
+                initial={{ scale: 1.12 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+                transition={{ duration: 1.6, ease }}
+              >
+                <Image
+                  src={aboutImage}
+                  alt={`${contact.name}, founder of Kalpayojak Interiors`}
+                  fill
+                  placeholder="blur"
+                  sizes="(min-width: 768px) 448px, 100vw"
+                  className="object-cover object-[45%_top]"
+                />
+              </motion.div>
+            </motion.div>
+            <motion.div
+              className="absolute -bottom-6 right-4 rounded-sm bg-sage-soft md:right-0 px-5 py-4 shadow-[0_10px_30px_-18px_rgba(11,59,52,0.4)]"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import logo from "@/assets/logo.png";
 import { contact, mapsLink, nav } from "@/content/site";
+import { InstagramIcon } from "./icons";
 
 export function Footer() {
   return (
@@ -9,6 +10,14 @@ export function Footer() {
         <div>
           <Image src={logo} alt="Kalpayojak" className="h-12 w-auto mix-blend-multiply" sizes="140px" />
           <p className="mt-4 max-w-xs text-sm text-stone">Interior design for calm, intentional and lived-in homes.</p>
+          <a
+            href={contact.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center gap-2 text-sm text-forest hover:text-clay-deep"
+          >
+            <InstagramIcon className="size-4" />@{contact.instagram}
+          </a>
         </div>
         <a
           href={mapsLink}

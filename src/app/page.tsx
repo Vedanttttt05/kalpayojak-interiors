@@ -7,7 +7,7 @@ import { Hero } from "@/components/Hero";
 import { MotionProvider } from "@/components/MotionProvider";
 import { Featured } from "@/components/Featured";
 import { Process } from "@/components/Process";
-import { Reels } from "@/components/Reels";
+import { Videos } from "@/components/Videos";
 import { Spaces } from "@/components/Spaces";
 import { Testimonials } from "@/components/Testimonials";
 
@@ -20,7 +20,7 @@ export default function Home() {
         <About />
         <Featured />
         <Spaces />
-        <Reels />
+        <Videos />
         <Process />
         <Testimonials />
         <Contact />
