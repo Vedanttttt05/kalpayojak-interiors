@@ -5,9 +5,11 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { MotionProvider } from "@/components/MotionProvider";
+import { Featured } from "@/components/Featured";
 import { Process } from "@/components/Process";
+import { Reels } from "@/components/Reels";
+import { Spaces } from "@/components/Spaces";
 import { Testimonials } from "@/components/Testimonials";
-import { Work } from "@/components/Work";
 
 export default function Home() {
   return (
@@ -16,7 +18,9 @@ export default function Home() {
       <main>
         <Hero />
         <About />
-        <Work />
+        <Featured />
+        <Spaces />
+        <Reels />
         <Process />
         <Testimonials />
         <Contact />

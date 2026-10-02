@@ -27,9 +27,9 @@ export function About() {
           <div className="relative">
             <ParallaxImage
               src={aboutImage}
-              alt="TV unit with floating walnut shelves and warm cove lighting"
+              alt="Sage leather sofas over a patterned rug"
               sizes="(min-width: 768px) 45vw, 100vw"
-              className="aspect-[4/3] rounded-sm"
+              className="aspect-[4/5] rounded-sm md:aspect-[4/3]"
             />
             <motion.div
               className="absolute -bottom-6 right-4 rounded-sm bg-sage-soft px-5 py-4 shadow-[0_10px_30px_-18px_rgba(11,59,52,0.4)]"

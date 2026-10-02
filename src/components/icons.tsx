@@ -61,7 +61,7 @@ export function MailIcon({ className }: IconProps) {
     <svg
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
+      stroke="currentColor" 
       strokeWidth="1.25"
       aria-hidden="true"
       className={className}

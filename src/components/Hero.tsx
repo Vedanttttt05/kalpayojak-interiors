@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useMotionTemplate, useScroll, useTransform } from "framer-motion";
-import { contact, heroImage, heroImageWide, services, whatsappLink } from "@/content/site";
+import { contact, heroImageWide, heroReel, services, whatsappLink } from "@/content/site";
 import { ArrowIcon, WhatsAppIcon } from "./icons";
 import { LineReveal, Marquee, ease } from "./motion";
 
@@ -94,14 +94,15 @@ function ExpandingImage() {
     <div ref={ref} className="pt-8 md:pt-14">
       <motion.div className="relative h-[82svh] overflow-hidden bg-sand md:h-[92vh]" style={{ clipPath }}>
         <motion.div className="absolute inset-0" style={{ scale }}>
-          <Image
-            src={heroImage}
-            alt="Living room with cane sofa, walnut table and soft cove lighting"
-            fill
-            priority
-            placeholder="blur"
-            sizes="100vw"
-            className="object-cover md:hidden"
+          <video
+            src={heroReel.src}
+            poster={heroReel.poster}
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-label={heroReel.label}
+            className="absolute inset-0 size-full object-cover md:hidden"
           />
           <Image
             src={heroImageWide}
@@ -109,14 +110,20 @@ function ExpandingImage() {
             fill
             priority
             placeholder="blur"
-            sizes="100vw"
+            sizes="(min-width: 768px) 100vw, 1px"
             className="hidden object-cover md:block"
           />
         </motion.div>
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/45 to-transparent px-5 pb-5 pt-24 md:px-8">
           <div className="mx-auto flex max-w-6xl items-end justify-between text-cream">
-            <p className="font-display text-2xl italic">The Sage Residence</p>
-            <p className="text-xs tracking-[0.18em] opacity-80">01 · LIVING</p>
+            <p className="font-display text-2xl italic">
+              <span className="md:hidden">{heroReel.label}</span>
+              <span className="hidden md:inline">The Sage Residence</span>
+            </p>
+            <p className="text-xs tracking-[0.18em] opacity-80">
+              <span className="md:hidden">ON SITE</span>
+              <span className="hidden md:inline">01 · LIVING</span>
+            </p>
           </div>
         </div>
       </motion.div>

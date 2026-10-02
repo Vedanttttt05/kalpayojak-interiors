@@ -182,3 +182,32 @@ export const fadeUp: Variants = {
   hidden: { opacity: 0, y: 18 },
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
 };
+
+/* Prev / next buttons for a horizontal row on pointer devices */
+export function RailArrows({
+  container,
+  className,
+}: {
+  container: RefObject<HTMLElement | null>;
+  className?: string;
+}) {
+  const go = (dir: number) => {
+    const el = container.current;
+    if (el) el.scrollBy({ left: dir * el.clientWidth * 0.7, behavior: "smooth" });
+  };
+  const btn = `grid size-11 place-items-center rounded-full border transition-colors duration-300 ${className ?? ""}`;
+  return (
+    <div className="hidden gap-2 md:flex">
+      <motion.button type="button" whileTap={{ scale: 0.92 }} onClick={() => go(-1)} className={btn} aria-label="Scroll back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-4 rotate-180" aria-hidden="true">
+          <path d="M4 12h15m-5-6 6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </motion.button>
+      <motion.button type="button" whileTap={{ scale: 0.92 }} onClick={() => go(1)} className={btn} aria-label="Scroll forward">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-4" aria-hidden="true">
+          <path d="M4 12h15m-5-6 6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </motion.button>
+    </div>
+  );
+}
